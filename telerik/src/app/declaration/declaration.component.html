@@ -1,0 +1,317 @@
+
+<header><button class="k-button" (click)="sendDeclaration()">Send Declaration</button><button class="k-button" (click)="newDeclaration()">New Declaration</button></header>
+<section class="declaration-section">{{declarationOutput}}</section>
+
+ <form #myForm="ngForm">
+<div class = "wrapper">
+  <div class="panelbar-wrapper">
+  <kendo-panelbar>
+ 
+
+  <kendo-panelbar-item [title]="'Declaration Type'">
+      <ng-template kendoPanelBarContent>
+  <!-- <div class="group" > -->
+  <div class="field">
+    <label class= "field-label">Decln Type [01]: 
+    <kendo-combobox class="field-value" [data]="declarationTypes" [(ngModel)]="declaration.declarationType" name="declarationType"> </kendo-combobox>
+    </label>
+
+    <label class= "field-label">Trader Reference [07]: 
+        <input class="field-value k-textbox" [(ngModel)]="declaration.traderReference" name="traderReference" />
+    </label>
+
+
+  </div>
+  <!-- </div> -->
+
+
+  <!-- <div class="group" > -->
+  <div class="field">
+    <label class="field-label">Badge: 
+    <kendo-combobox class="field-value" [data]="badges" [(ngModel)]="declaration.badge" name="badge" > </kendo-combobox>
+    </label>
+  </div>
+  <!-- </div> -->
+  </ng-template>
+</kendo-panelbar-item>        
+
+<kendo-panelbar-item [title]="'Exporter Importer Details'">
+    <ng-template kendoPanelBarContent>
+  <!-- <div class="group" > -->
+  <div class="field">
+    <label class="field-label"> <strong>Exporter [02]: </strong>
+    <kendo-autocomplete class="field-value" [data]="exporters" [suggest]="true" [placeholder]="'e.g. Kodak'" [(ngModel)]="declaration.exporter" name="exporter"> </kendo-autocomplete>
+    </label>
+
+    <label class="field-label"> <strong>Seller [02]: </strong>
+      <kendo-autocomplete class="field-value" [data]="exporters" [suggest]="true" [placeholder]="'e.g. Kodak'" [(ngModel)]="declaration.seller" name="seller"> </kendo-autocomplete>
+      </label>
+  </div>
+<!-- </div> -->
+
+
+<!-- <div class="group" > -->
+  <div class="field">
+    <label class="field-label"><strong>Importer [08]: </strong>
+    <kendo-autocomplete class="field-value" [data]="importers" [suggest]="true" [placeholder]="'e.g. Towers'" [(ngModel)]="declaration.importer" name="importer"> </kendo-autocomplete>
+    </label>
+
+    <label class="field-label"> <strong>Buyer [02]: </strong>
+      <kendo-autocomplete class="field-value" [data]="buyers" [suggest]="true" [placeholder]="'e.g. Kodak'" [(ngModel)]="declaration.buyer" name="buyer"> </kendo-autocomplete>
+      </label>
+  </div>
+<!-- </div> -->
+
+
+<!-- <div class="group" > -->
+  <div class="field">
+    <label class="field-label"><strong>Declarant [08]: </strong>
+    <kendo-autocomplete class="field-value" [data]="declarants" [suggest]="true" [placeholder]="'e.g. ASM'" [(ngModel)]="declaration.declarant" name="declarant"> </kendo-autocomplete>
+    </label>
+    <label class="field-label"> <strong>Repres. [14]: </strong>
+      <kendo-autocomplete class="field-value" [data]="representatives" [suggest]="true" [placeholder]="'e.g. Kodak'" [(ngModel)]="declaration.representative" name="representative"> </kendo-autocomplete>
+      </label>
+  </div>
+<!-- </div> -->
+</ng-template>
+</kendo-panelbar-item>
+
+
+<kendo-panelbar-item [title]="'Transport Details'">
+    <ng-template kendoPanelBarContent>
+<!-- <div class="group" > -->
+    <div class="field">
+    <label class="field-label">Total Packages [06]:
+    <kendo-numerictextbox class="field-value" [(ngModel)]="declaration.totalPackages" name="totalPackages"
+        [value]="value" [min]="0" [max]="100" [autoCorrect]="autoCorrect">
+    </kendo-numerictextbox>
+    </label>
+  <!-- </div> -->
+<!-- </div> -->
+
+<!-- <div class="group" > -->
+    <!-- <div class="field"> -->
+    <label class="field-label">Repr. Status [14]: 
+        <kendo-combobox class="field-value" [data]="statuses" [(ngModel)]="declaration.repStatus" name="repStatus" > </kendo-combobox>
+    </label>    
+  <!-- </div> -->
+</div>
+
+  <div class="field">
+      <label class="field-label">Dispatch Country [15a]:
+      <kendo-autocomplete class="field-value" [data]="countries" [(ngModel)]="declaration.dispatchCountry" name="dispatchCountry" > </kendo-autocomplete>
+      </label>
+
+      <label class="field-label">Destination Country [17a]:
+          <kendo-autocomplete class="field-value" [data]="countries"  [(ngModel)]="declaration.destinationCountry" name="destinationCountry"> </kendo-autocomplete>
+          </label>
+  </div>
+
+  <div class="field">
+      <label class="field-label">Arrival Trpt Type [18]: 
+          <kendo-combobox class="field-value" [data]="transportTypes" [(ngModel)]="declaration.arrivalTransportType" name="arrivalTransportType" > </kendo-combobox>
+      </label>
+      <label class="field-label">ID
+        <input class="field-value k-textbox" [(ngModel)]="declaration.id" name="id" />
+      </label>
+  </div>
+
+  <div class="field">
+      <label class="field-label">Border Transport Country [21]:
+      <kendo-autocomplete class="field-value" [data]="countries" [(ngModel)]="declaration.borderTransportCountry" name="borderTransportCountry"> </kendo-autocomplete>
+      </label>
+
+      <label class="field-label">Nature of Transaction [24]:
+          <kendo-combobox class="field-value" [data]="transactionTypes" [(ngModel)]="declaration.natureOfTransaction" name="natureOfTransaction"> </kendo-combobox>
+          </label>
+  </div>
+
+  <div class="field">
+      <label class="field-label">Border Transport Mode [21]:
+           <kendo-combobox class="field-value" [data]="transportModes"  [(ngModel)]="declaration.borderTransportMode" name="borderTransportMode" > </kendo-combobox>
+      </label>
+
+      <label class="field-label">Inland Transport Mode [26]:
+        <kendo-combobox class="field-value" [data]="transportModes" [(ngModel)]="declaration.inlandTransportMode" name="inlandTransportMode"> </kendo-combobox>
+      </label>
+  </div>
+
+  <div class="field">
+  <label class="field-label">Delivery Terms [20]:
+    <kendo-autocomplete class="field-value" [data]="deliveryTerms" [(ngModel)]="declaration.deliveryTerms" name="deliveryTerms" > </kendo-autocomplete>
+  </label>
+  </div>
+
+  <div class="field">
+  <label class="field-label">UN/LOCODE:
+    <kendo-autocomplete class="field-value" [data]="unCodes" [(ngModel)]="declaration.unLoCode" name="unLoCode" > </kendo-autocomplete>
+  </label>
+
+  <label class="field-label">OR City & Location:
+    <input class="field-value k-textbox" [(ngModel)]="declaration.cityLocation" name="cityLocation"/> 
+  </label>
+  </div>
+  </ng-template>
+</kendo-panelbar-item>
+
+
+<kendo-panelbar-item [title]="'Invoice Details'">
+    <ng-template kendoPanelBarContent>
+
+  <div class="field">
+    <label class="field-label">Invoice Total [22]:
+      <kendo-autocomplete class="field-value" [data]="currencies" [(ngModel)]="declaration.invoiceTotalCurrency" name="invoiceTotalCurrency"> </kendo-autocomplete>
+    </label>
+    <kendo-numerictextbox  class="field-value" [(ngModel)]="declaration.invoiceTotalAmount" name="invoiceTotalAmount"></kendo-numerictextbox> 
+  </div>
+
+<div class="field">
+    <label class="field-label">Exchange Rate [23]
+      <kendo-numerictextbox class="field-value" [(ngModel)]="declaration.invoiceExchangeRate" name="invoiceExchangeRate"></kendo-numerictextbox> 
+    </label>
+  </div>
+
+<div class="field">
+  <label class = "field-label">Goods Location [30]:
+    <kendo-autocomplete class="field-value" [data]="countries"  [(ngModel)]="declaration.goodsLocation" name="goodsLocation" > </kendo-autocomplete>
+  </label>
+  <label class="field-label">
+  <kendo-combobox class="field-value" [data]="locations" > </kendo-combobox>
+</label>
+</div>
+
+<div class="field">
+  <label class="field-label">
+  <kendo-combobox class="field-value" [data]="codes" > </kendo-combobox>
+</label>
+  <label class="field-label">
+  <kendo-autocomplete class="field-value" [data]="goodsLocations" > </kendo-autocomplete>
+</label>
+</div>
+
+<div class="field"> 
+  <label class="field-label">1st Deferment [48]
+    <kendo-numerictextbox class="field-value"  [(ngModel)]="declaration.firstDeferment" name="firstDeferment"></kendo-numerictextbox> 
+  </label>
+
+  <label class="field-label">2nd Deferment [48]
+    <kendo-numerictextbox class="field-value"  [(ngModel)]="declaration.secondDeferment" name="secondDeferment"></kendo-numerictextbox> 
+  </label>
+</div>
+
+<div class="field">
+  <label class="field-label">Warehouse [49]
+    <input class="field-value k-textbox"  [(ngModel)]="declaration.warehouse" name="warehouse" />
+  </label>
+  <label class="field-label">Site:
+    <kendo-combobox class="field-value" [data]="sites"  [(ngModel)]="declaration.site" name="site"> </kendo-combobox>
+</label>
+
+</div>
+
+<div class="field">
+  <label class="field-label">Supervising Office [44]:
+    <kendo-autocomplete class="field-value" [data]="offices"  [(ngModel)]="declaration.supervisingOffice" name="supervisingOffice"> </kendo-autocomplete>
+  </label>
+  <label class="field-label">Gross Mass [35]
+    <kendo-numerictextbox class="field-value"  [(ngModel)]="declaration.grossMass" name="grossMass"></kendo-numerictextbox> 
+  </label>
+
+</div>
+</ng-template>
+</kendo-panelbar-item>
+</kendo-panelbar>
+
+<button class="k-button" (click)="showHideAuthorisationGrid()">Authorisation Holders</button> <p></p>
+
+
+<kendo-grid *ngIf="showAuthorisationGrid" [data]="declaration.authorisationHolders" #authGrid
+(dataStateChange)="onStateChange($event)"
+              (edit)="editHandler($event)" (cancel)="cancelHandler($event)"
+              (save)="saveHandler($event)" (remove)="removeHandler($event)"
+              (add)="addHandler($event, myForm)"
+              [navigable]="true"
+            class="grid"  
+              
+>
+<ng-template kendoGridToolbarTemplate>
+    <h2>Authorisation Holders</h2>  
+    <button kendoGridAddCommand type="button">Add new</button>    
+</ng-template>
+
+  <kendo-grid-column field="type" title="Type"  width="220" 
+  [headerStyle]="{'background-color': '#666','color': '#fff','line-height': '1em'}"
+>
+      <ng-template kendoGridEditTemplate let-dataItem="dataItem">
+        <div>
+          <input [(ngModel)]="dataItem.type" kendoGridFocusable name="type" class="k-textbox" required/>         
+          <button kendoButton [icon]="'search'" (click)="showAuthHolderTypes()"></button>
+          <div *ngIf="showAuthorisationHolderTypes">
+            <kendo-dropdownlist [data]="authorisationHolderTypes" [textField]="'Description'" [valueField]="'Code'" #auth></kendo-dropdownlist>
+            <button kendoButton [icon]="'check-circle'" (click)="acceptAuth(auth, dataItem)"></button>
+          </div>
+        </div>
+      </ng-template>
+
+  </kendo-grid-column>
+  <kendo-grid-column field="identifier" title="Identifier" width="100" [headerStyle]="{'background-color': '#666','color': '#fff','line-height': '1em'}">  
+      <ng-template kendoGridEditTemplate let-dataItem="dataItem">
+          <input [(ngModel)]="dataItem.identifier" kendoGridFocusable name="Identifier" class="k-textbox" required/>
+      </ng-template>
+
+  </kendo-grid-column>
+  <kendo-grid-command-column title="" width="220" [headerStyle]="{'background-color': '#666','color': '#fff','line-height': '1em'}">
+      <ng-template kendoGridCellTemplate let-isNew="isNew">
+          <button kendoGridEditCommand type="button" [primary]="true">Edit</button>
+          <button kendoGridRemoveCommand type="button">Remove</button>
+          <button kendoGridSaveCommand type="button" [disabled]="myForm.invalid || myForm.pristine">{{ isNew ? 'Add' : 'Update' }}</button>
+          <button kendoGridCancelCommand type="button">{{ isNew ? 'Discard changes' : 'Cancel' }}</button>
+      </ng-template>
+  </kendo-grid-command-column>
+
+</kendo-grid>
+
+
+<button class="k-button" (click)="showHideContainerGrid()">Containers</button>
+
+<kendo-grid [data]="declaration.containers"  *ngIf="showContainerGrid" 
+(dataStateChange)="onStateChange($event)"
+              (edit)="editHandler($event)" (cancel)="cancelContainerHandler($event)"
+              (save)="saveContainerHandler($event)" (remove)="removeContainerHandler($event)"
+              (add)="addContainerHandler($event, myForm)"
+              [navigable]="true"
+              (cellClick)="cellClickHandler($event)"
+              (cellClose)="cellCloseHandler($event)"
+            class="grid </div>"  
+              
+>
+<ng-template kendoGridToolbarTemplate>
+    <h2>Containers</h2>  
+    <button kendoGridAddCommand type="button">Add new</button>    
+    <button class='k-button' [disabled]="!containerHasChanges()" (click)="saveChanges(grid);">Save Changes</button>
+    <button class='k-button' [disabled]="!containerHasChanges()" (click)="cancelChanges(grid);">Cancel Changes</button>
+</ng-template>
+
+  <kendo-grid-column field="containerId" title="containerId"  width="220" 
+  [headerStyle]="{'background-color': '#666','color': '#fff','line-height': '1em'}"
+>
+      <ng-template kendoGridEditTemplate let-dataItem="dataItem">
+          <input [(ngModel)]="dataItem.containerId" kendoGridFocusable name="containerId" class="k-textbox" required/>
+      </ng-template>
+  </kendo-grid-column>
+
+  <kendo-grid-command-column title="" width="220" [headerStyle]="{'background-color': '#666','color': '#fff','line-height': '1em'}">
+      <ng-template kendoGridCellTemplate let-isNew="isNew">          
+          <button kendoGridRemoveCommand type="button">Remove</button>
+          <button kendoGridSaveCommand type="button" [disabled]="myForm.invalid || myForm.pristine">{{ isNew ? 'Add' : 'Update' }}</button>
+          <button kendoGridCancelCommand type="button">{{ isNew ? 'Discard changes' : 'Cancel' }}</button>
+      </ng-template>
+  </kendo-grid-command-column>
+
+</kendo-grid>
+
+
+
+</div>
+</div> <!--end of wrapper div-->
+</form>

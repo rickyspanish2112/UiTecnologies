@@ -1,0 +1,81 @@
+
+header {
+   margin-left: 50%;
+  }
+.declaration-section {
+    border: 1px solid black;
+    font-size: 10px;
+    font-family: "Titillium web", sans-serif;
+    font-weight: bold;
+
+}
+
+.wrapper{
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+.row{
+    display:flex; /*defines a flex container, enables flex content for all its children */
+
+}
+
+.col{
+    flex:1; /*unit for allocating space to the children */
+    
+}
+
+/* contains a label and a value */
+.field {
+    display: flex;
+    margin: 0 0 10px 0;
+}
+
+.field-label{
+    width:40%;
+    
+
+}
+
+.field-value{
+    width: 60%;
+    float: right;
+
+}
+
+.field label + label /*label after another label */
+{
+    margin-left:30px;
+}
+
+.k-numerictextbox
+{
+    margin-left: 30px;
+}
+.k-numerictextbox
+{
+    width:100px;
+}
+
+.k-dropdown-wrap
+{
+    width:100px;
+}
+.k-content > div
+{
+    padding: 10px 10px 10px 10px;
+}
+
+
+
+.grid{
+    width:600px;
+    margin: 20px 20px 20px 20px;
+}
+
+.collapsed {
+    display: none;
+    height: 20px;
+    width: 200px;
+    margin: 10px 10px 10px 10px;
+}

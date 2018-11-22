@@ -1,0 +1,255 @@
+<p>
+  home works!
+</p>
+<div class="title"><h1>Account Details</h1></div>
+<kendo-textbox-container floatingLabel="Short Code">
+  <input kendoTextBox id="shortCode"   value="{{account.shortCode}}">
+ </kendo-textbox-container>
+<div class="row">
+  <div class="col">
+    <div>
+       <kendo-textbox-container floatingLabel="Short Code">
+        <input kendoTextBox id="shortCode"   value="{{account.shortCode}}">
+       </kendo-textbox-container>
+    </div>
+    
+    <div>
+      
+      <kendo-textbox-container floatingLabel="External Id">
+        <input kendoTextBox id="externalId" value="{{account.externalId}}">
+      </kendo-textbox-container>
+    </div>
+
+    <div>
+      <kendo-textbox-container floatingLabel="Account Name">
+        <input kendoTextBox id="accountName" value="{{account.accountName}}">
+      </kendo-textbox-container>
+    </div>
+
+    <div>
+      <p>Main Telephone</p>        
+        <kendo-maskedtextbox [mask]="mask" ></kendo-maskedtextbox><!--[value]="{{account.mainTelephone}}"-->
+      
+    </div>
+
+
+    <kendo-textbox-container floatingLabel="Fax:">
+      <input kendoTextBox id="fax" value="{{account.fax}}">
+    </kendo-textbox-container>
+
+    <label for="accountType"></label>
+    <div id="accountType">
+      <label [for]="'exportAccount'">Export Account</label>
+      <!--<input type="checkbox" id="exportAccount" [checked]="account.exportAccount">-->
+      <kendo-switch [checked]="account.exportAccount"  id="exportAccount"></kendo-switch>
+      <label [for]="'importAccount'">Import Account</label>
+      <!--<input type="checkbox" id="importAccount" [checked]="account.importAccount">-->
+      <kendo-switch [checked]="account.importAccount" id="importAccount"></kendo-switch>
+    </div>
+    <div>
+      <kendo-textbox-container floatingLabel="Country:">
+        <input kendoTextBox id="countryCode" value="{{account.countryCode}}" >
+        <input kendoTextBox id="country" value="{{account.country}}">
+      </kendo-textbox-container>
+    </div>
+
+    <div>
+      <kendo-textbox-container floatingLabel="TIN:">
+        <input kendoTextBox id="tin" value="{{account.tin}}">
+      </kendo-textbox-container>
+    </div>
+    <div>
+        <kendo-textbox-container floatingLabel="Website:">
+          <input kendoTextBox id="website" value="{{account.website}}">
+        </kendo-textbox-container>
+    </div>
+    <div>
+      <kendo-textbox-container floatingLabel="Created By:">
+        <input kendoTextBox id="createdBy" value="{{account.createdBy}}">
+      </kendo-textbox-container>
+    </div>
+
+  </div>
+  <div class="col">
+      <div>
+        <kendo-textbox-container floatingLabel="Created By:">
+          <input kendoTextBox id="accountNumber" value="{{account.accountNumber}}">
+        </kendo-textbox-container>
+    </div>
+    <fieldset>
+      <legend>Relationship</legend>
+      <p>
+      <label for ="customer">Customer</label>
+      <!--<input type="checkbox" id="customer" [checked]="account.customer">-->
+      <kendo-switch [checked]="account.customer"  id="customer"></kendo-switch>
+      
+      <label for ="supplier">Supplier</label>
+      <!--<input type="checkbox" id="supplier" [checked]="account.supplier">-->
+      <kendo-switch [checked]="account.supplier"  id="supplier"></kendo-switch>
+      </p>
+
+      <p>
+      <label for ="prospect">Prospect</label>
+      <!--<input type="checkbox" id="prospect" [checked]="account.prospect">-->
+      <kendo-switch [checked]="account.prospect"  id="prospect"></kendo-switch>
+      
+      <label for ="invoicee">Invoicee</label>
+      <!--<input type="checkbox" id="invoicee" [checked]="account.invoicee"> -->
+      <kendo-switch [checked]="account.invoicee"  id="invoicee"></kendo-switch>     
+      </p>
+    </fieldset>
+    <p>Activation Date:</p>
+    <kendo-calendar [value]="account.activationDate"></kendo-calendar>
+  </div>
+
+  <div class="col2"></div>
+
+</div>
+<div class="row">
+    <div class="col"><button kendoButton  (click)="dlgAddress.showModal()" [primary]="true">Primary Address</button></div>
+    <div class="col"><button kendoButton  (click)="open()" [primary]="true">Primary Contact</button></div>
+</div>
+
+<dialog id="dlgPrimaryAddress" #dlgAddress>
+    <form class="k-form-inline">
+      <div>
+          <label class="k-form-field" for="description">Description:</label>
+          <input class="k-textbox" type="text" id = "description" value="{{account.description}}">
+      </div>
+    </form>
+  <form class="k-form">
+  <div class="k-form-field">
+      <p>
+
+          <label class="k-checkbox-label" for ="collection">Collection</label>
+          <input class="k-checkbox" type="checkbox" id="collection" [checked]="account.collection" />
+          
+
+          <label class="k-checkbox-label" for ="delivery">Delivery</label>
+          <input class="k-checkbox" type="checkbox" id="delivery"  [checked]="account.delivery">      
+          
+          <label class="k-checkbox-label" for ="airWaybill">Air Waybill Print</label>
+          <input class="k-checkbox" type="checkbox" id="airWaybill"  [checked]="account.airwaybill"> 
+      </p>
+      <p>
+          <label class="k-checkbox-label" for ="warehouse">Warehouse</label>
+          <input class="k-checkbox" type="checkbox" id="warehouse"  [checked]="account.warehouse">
+          
+          <label class="k-checkbox-label" for ="customer">Customer</label>
+          <input class="k-checkbox" type="checkbox" id="customer"  [checked]="account.customer">      
+          
+          <label class="k-checkbox-label" for ="invoice">Invoice</label>
+          <input class="k-checkbox" type="checkbox" id="invoice"  [checked]="account.invoice">
+      </p>
+      <p>
+          <label class="k-checkbox-label" for ="consignee">Consignee</label>
+          <input class="k-checkbox" type="checkbox" id="consignee"  [checked]="account.consignee">
+          
+          <label class="k-checkbox-label" for ="shipper">Shipper</label>
+          <input class="k-checkbox" type="checkbox" id="shipper"  [checked]="account.shipper">      
+          
+          <label class="k-checkbox-label" for ="airlineMessaging">Airline Messaging</label>
+          <input class="k-checkbox" type="checkbox" id="airlineMessaging"  [checked]="account.airlineMessaging">
+      </p>
+      <p>
+          <label class="k-checkbox-label" for ="oceanDocument">Ocean Document</label>
+          <input class="k-checkbox" type="checkbox" id="oceanDocument"  [checked]="account.oceanDocument">
+          
+      </p>
+  </div>
+</form>
+  <form class="k-form-inline">
+  <div>
+      <label class="k-form-field" for="street1">Street 1:</label>
+      <input class="k-textbox" type="text" id = "street1" value="{{account.street1}}">
+  </div>
+  <div>      
+      <label class="k-form-field" for="street2">Street 2:</label>
+      <input class="k-textbox" type="text" id = "street2" value="{{account.street2}}">
+  </div>
+  <div>      
+      <label class="k-form-field" for="street3">Street 3:</label>
+      <input class="k-textbox" type="text" id = "street3" value="{{account.street3}}">
+  </div>
+  <div>
+      <label class="k-form-field" for="town">Town:</label>
+      <input class="k-textbox" type="text" id = "town" value="{{account.town}}">
+      <label class="k-form-field" for="county">County:</label>
+      <input class="k-textbox" type="text" id = "county" value="{{account.county}}">
+  </div>
+  <div>
+      <label class="k-form-field" for="postcode"><span>Postcode:</span></label>
+      <input class="k-textbox" type="text" id = "postcode" value="{{account.postcode}}"><span><span class="k-field-info k-required">required</span></span>
+      <label class="k-form-field" for="country">Country:</label>
+      <input class="k-textbox" type="text" id = "country" value="{{account.country}}">
+  </div>
+
+  <div style="text-align: right;">
+      <button kendoButton (click)="dlgAddress.close()" [look]="'outline'" [icon]="'check'">OK</button>
+      <button kendoButton (click)="dlgAddress.close()" [look]="'outline'" [icon]="'close'">Cancel</button>
+  </div>
+  </form>
+</dialog>
+
+<kendo-dialog id="dlgPrimaryContact" #dlgContact title="Primary Contact Details" *ngIf="opened" (close)="close()">
+
+
+  <!--
+  <label for="title">Title:</label>
+  <select id="title">
+      <option>No Title</option>
+      <option>Dr</option>
+      <option>Miss</option>
+      <option>Mr</option>
+      <option>Mrs</option>
+      <option>Ms</option>
+  </select>-->
+  <form class="k-form-inline">
+  <div class="example-wrapper">
+      <p>Title:</p>
+      <kendo-dropdownlist [data]="listItems">
+      </kendo-dropdownlist>
+    </div>
+  
+  <label class="k-form-field"  for="firstName">First Name:</label>
+  <input  class="k-textbox" type="text" id = "firstName" value="{{account.firstName}}">
+
+  <label class="k-form-field"  for="lastName">Last Name:</label>
+  <input  class="k-textbox" type="text" id = "lastName" value="{{account.lastName}}">
+
+
+<div>
+  <label class="k-form-field"  for="jobTitle">Job Title:</label>
+  <input  class="k-textbox" type="text" id="jobTitle" value="{{account.jobTitle}}">  
+</div>
+
+<div>
+    <label class="k-form-field"  for="telephone">Telephone:</label>
+    <input  class="k-textbox" type="text" id = "telephone" value="{{account.telephone}}">
+    
+    <label class="k-form-field"  for="mobile">Mobile:</label>
+    <input  class="k-textbox" type="text" id = "mobile" value="{{account.mobile}}">
+  
+    <label class="k-form-field"  for="fax">Fax:</label>
+    <input  class="k-textbox"type="text" id = "fax" value="{{account.fax}}">
+  
+  </div>
+
+  <div>
+      <label class="k-form-field"  for="email">Email:</label>
+      <input  class="k-textbox" type="text" id="email" value="{{account.email}}">  
+  </div>
+
+  <div>
+      <label class="k-form-field"  for="notes">Notes:</label>
+      <textarea  kendoTextArea id="notes">{{account.notes}}  </textarea>
+  </div>
+</form>
+<kendo-dialog-actions>
+  <div style="text-align: right;">
+      <button kendoButton  (click)="close()" [look]="'outline'" [icon]="'check'">OK</button>
+      <button kendoButton (click)="close()" [look]="'outline'" [icon]="'close'">Cancel</button>
+  </div>
+</kendo-dialog-actions>
+</kendo-dialog>
+

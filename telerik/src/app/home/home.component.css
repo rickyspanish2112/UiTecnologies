@@ -1,0 +1,56 @@
+.row{
+    display:flex; /*defines a flex container, enables flex content for all its children */
+  /*  font-family: Tahoma, sans-serif!important;*/
+}
+
+.col{
+    flex:1; /*unit for allocating space to the children */
+    
+}
+.col2{
+    flex:2; /*unit for allocating space to the children */
+    
+}
+
+.title{
+
+    text-align: center;
+    background-color: lightgrey;
+    height: 100px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+/*
+label  {
+    display: inline-block;
+    width: 120px;
+    text-align: right;
+}
+
+
+
+  input {
+    font: 1em sans-serif;
+    width: 250px;
+    box-sizing: border-box;
+    border: 1px solid #999;
+    margin-bottom: 20px;
+}
+*/
+
+
+
+textarea {
+    vertical-align: top;
+    height: 5em;
+    resize: vertical;
+    width: 500px;
+}
+    #countryCode{
+        width: 50px;
+    }
+
+input[type=checkbox], input[type=radio] {
+    width: auto;
+    border: none;
+}

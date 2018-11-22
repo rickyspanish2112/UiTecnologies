@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+// styles.scss
+$accent: rgb(12, 162, 232); // brand color
+$font-size: 14px; //this works
+$font-family: "Tahoma", sans-serif; //this doesn't
+@import "~@progress/kendo-theme-default/scss/all";
+
+body {
+    font-family: "Tahoma", sans-serif; //this will do it
+    font-size:  $font-size;
+}
