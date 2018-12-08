@@ -1,0 +1,28 @@
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  border: black solid 3px;
+  border-radius: 10px;
+  padding-left: 15px;
+}
+
+.flex-item{
+  width: 40%;
+ // background: tomato;
+  //height: 450px;
+  overflow-y: auto;
+  margin-right: 5PX;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 10%;
+}

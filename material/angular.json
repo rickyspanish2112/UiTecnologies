@@ -123,10 +123,5 @@
       }
     }
   },
-  "defaultProject": "material",
-  "schematics": {
-    "@schematics/angular:component": {
-      "styleext": "scss"
-    }
-  }
+  "defaultProject": "material"
 }

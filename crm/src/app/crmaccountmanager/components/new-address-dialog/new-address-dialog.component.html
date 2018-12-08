@@ -1,0 +1,156 @@
+<h2 mat-dialog-title>Add New Address</h2>
+
+<mat-dialog-content>
+  <div class="example-container">
+    <mat-form-field>
+      <mat-error *ngIf="validDescription.invalid">{{
+        getDescriptionErrorMessage()
+      }}</mat-error>
+      <mat-select
+        placeholder="Description"
+        name="description"
+        [formControl]="validDescription"
+        required
+        [(ngModel)]="address.title"
+      >
+        <mat-option
+          *ngFor="let description of addressDescriptions"
+          [value]="description.name"
+        >
+          {{ description.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+<mat-form-field class="example-form-field" style="margin-top: 20px;">
+  <mat-error *ngIf="validStreet1.invalid">{{
+    getStreet1ErrorMessage()
+  }}</mat-error>
+  <input
+    matInput
+    type="text"
+    placeholder="Street 1"
+    [(ngModel)]="address.street1"
+    required
+  />
+  <button
+    mat-button
+    *ngIf="address.street1"
+    matSuffix
+    mat-icon-button
+    aria-label="Clear"
+    (click)="address.street1 = ''"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+
+<mat-form-field class="example-form-field" style="margin-top: 20px;">
+  <input
+    matInput
+    type="text"
+    placeholder="Street 2"
+    [(ngModel)]="address.street2"
+  />
+  <button
+    mat-button
+    *ngIf="address.street2"
+    matSuffix
+    mat-icon-button
+    aria-label="Clear"
+    (click)="address.street2 = ''"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+
+<mat-form-field class="example-form-field" style="margin-top: 20px;">
+  <input
+    matInput
+    type="text"
+    placeholder="Street 3"
+    [(ngModel)]="address.street3"
+  />
+  <button
+    mat-button
+    *ngIf="address.street3"
+    matSuffix
+    mat-icon-button
+    aria-label="Clear"
+    (click)="address.street3 = ''"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+
+<mat-form-field class="example-form-field" style="margin-top: 20px;">
+  <input
+    matInput
+    type="text"
+    placeholder="County"
+    [(ngModel)]="address.county"
+  />
+  <button
+    mat-button
+    *ngIf="address.county"
+    matSuffix
+    mat-icon-button
+    aria-label="Clear"
+    (click)="address.county = ''"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+
+<mat-form-field class="example-form-field" style="margin-top: 20px;">
+  <mat-error *ngIf="validPostCode.invalid">{{
+    getPostCodeErrorMessage()
+  }}</mat-error>
+  <input
+    matInput
+    type="text"
+    placeholder="Post Code"
+    [(ngModel)]="address.postCode"
+    required
+  />
+  <button
+    mat-button
+    *ngIf="address.postCode"
+    matSuffix
+    mat-icon-button
+    aria-label="Clear"
+    (click)="address.postCode = ''"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+
+<mat-form-field class="example-form-field" style="margin-top: 20px;">
+  <input
+    matInput
+    type="text"
+    placeholder="Country"
+    [(ngModel)]="address.country"
+  />
+  <button
+    mat-button
+    *ngIf="address.country"
+    matSuffix
+    mat-icon-button
+    aria-label="Clear"
+    (click)="address.country = ''"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+
+<mat-dialog-actions>
+  <button mat-button color="primary" (click)="save()">
+    <mat-icon>save</mat-icon> Save
+  </button>
+
+  <button mat-button color="primary" (click)="dismiss()">
+    <mat-icon>cancel</mat-icon> Cancel
+  </button>
+</mat-dialog-actions>
